@@ -22,5 +22,13 @@ public class test01 {
      *
      * 소스 코드 --> 바로 실행 ( HTML )
      * 자바소스 --> 컴파일:.class --> 실행.
+     *
+     * DTO - Data Transfer Object
+     * 사용자가 서버에 데이터를 전달할때 사용하는 클래스
+     * 서버가 사용자한테 데이터를 전달할때 사용하는 클래스
+     *
+     * DAO - Data Access Object
+     * ENTITY -
+     *  서버가 데이터베이스( 데이터 -> 서버 가능 )한테 데이터를 전달할때 사용하는 클래스
      */
 }
