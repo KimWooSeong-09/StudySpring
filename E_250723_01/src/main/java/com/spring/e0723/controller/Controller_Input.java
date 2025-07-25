@@ -1,6 +1,6 @@
 package com.spring.e0723.controller;
 
-import ch.qos.logback.core.model.Model;
+import org.springframework.ui.Model;
 import com.spring.e0723.dto.ArticleForm;
 import com.spring.e0723.entity.Article;
 import com.spring.e0723.repository.ArticleRepository;
@@ -43,7 +43,7 @@ public class Controller_Input {
         //2. DB에 추가하기
         Article save = articleRepository.save(entity);
         System.out.println(entity);
-        return "";
+        return "show";
     }
 
     /** localhost:8080//3 show
@@ -53,12 +53,24 @@ public class Controller_Input {
     /** localhost:8080/show/3*/
     @GetMapping("/show/{id}")
     public String show(
-            @PathVariable Long id
+            @PathVariable Long id,
+            Model model
     ) {
         log.info("show() / id : " + id);
 
         Article article = articleRepository.findById(id).orElse(null);
         log.info("show() / article : " + article);
-        return "/show";
+
+        model.addAttribute("article", article);
+        return "show";
+    }
+
+    @GetMapping("/articles")
+    public String index() {
+        /** 1. DB에서  모든 데이터 가져 오기*/
+        articleRepository.findAll();
+
+        /** 2. 가지고온 데이터를 뷰화면에 전달 --> Model*/
+        return "";
     }
 }
