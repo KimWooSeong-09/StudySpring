@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+
 /**
  * 1*/
 @Controller
@@ -66,11 +68,13 @@ public class Controller_Input {
     }
 
     @GetMapping("/articles")
-    public String index() {
+    public String index(Model model) {
         /** 1. DB에서  모든 데이터 가져 오기*/
-        articleRepository.findAll();
+        ArrayList<Article> articleList = articleRepository.findAll();
 
         /** 2. 가지고온 데이터를 뷰화면에 전달 --> Model*/
-        return "";
+        model.addAttribute("articleList", articleList);
+
+        return "index";
     }
 }
