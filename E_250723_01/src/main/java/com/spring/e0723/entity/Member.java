@@ -10,14 +10,15 @@ import jakarta.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Getter
 public class Member {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String username;
+    private String email;
 
     @Column
-    private String PassWord;
+    private String password;
 }
