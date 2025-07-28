@@ -4,6 +4,7 @@ package com.spring.e0723.controller;
 import com.spring.e0723.dto.MemberForm;
 import com.spring.e0723.entity.Article;
 import com.spring.e0723.entity.Member;
+import com.spring.e0723.repository.ArticleRepository;
 import com.spring.e0723.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -88,5 +89,18 @@ public class MemberController {
         Member article = memberRepository.findById(id).orElse(null);
         log.info("show() / article : " + article);
         return "/show";
+    }
+
+    @GetMapping("edit/{id}")
+    public String edit(
+            @PathVariable Long id, Model model
+    ) {
+        log.info("edit() / id : " + id);
+
+        Member byId = memberRepository.findById(id).orElse(null);
+        log.info("검색된 데이터 : " + byId);
+
+        model.addAttribute("article", byId);
+        return "edit";
     }
 }
