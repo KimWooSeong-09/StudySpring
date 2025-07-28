@@ -11,15 +11,15 @@ import lombok.Setter;
 @Setter
 @Getter
 public class MemberForm {
-    private String username;
-    private String PassWord;
+    private String email;
+    private String password;
 
     public Member toEntity() {
-        return new Member(null, username, PassWord);
+        return new Member(null, email, password);
     }
 
     @Override
     public String toString() {
-        return "MemberForm{ID='" + username + "', PassWord='" + PassWord + "'}";
+        return "MemberForm{ID='" + email + "', PassWord='" + password + "'}";
     }
 }
